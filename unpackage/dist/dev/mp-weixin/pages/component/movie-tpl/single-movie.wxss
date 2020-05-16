@@ -1,0 +1,39 @@
+
+.single-movie.data-v-7e21c3c1 {
+	position: relative;
+	height: 350rpx;
+	/* width: 280rpx; */
+	padding: 0 5rpx;
+}
+.movie-container.data-v-7e21c3c1 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	/* padding: 0 22rpx; */
+}
+.movie-img.data-v-7e21c3c1 {
+	width: 220rpx;
+	height: 300rpx;
+	padding-bottom: 20rpx;
+	position: relative;
+}
+.movie-title.data-v-7e21c3c1 {
+	margin-bottom: 16rpx;
+	font-size: 24rpx;
+	text-align: center;
+}
+.episode.data-v-7e21c3c1 {
+	position: absolute;
+	/* bottom:20rpx; */
+	width: 220rpx;
+	font-size: 30rpx;
+	color: #ffffff;
+	background: #000;
+	opacity: 0.6;
+	text-align: center;
+}
+

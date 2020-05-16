@@ -1,0 +1,15 @@
+
+.me_container {
+	height: 500rpx;
+}
+.page {
+	margin-bottom: 180rpx;
+}
+.login-button {
+	margin-top: 100rpx;
+}
+.notice {
+	height: 400rpx;
+	width: 100%;
+}
+

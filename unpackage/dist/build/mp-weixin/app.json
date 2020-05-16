@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/component/movie-tpl/movie-detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#ff6213",
+    "navigationStyle": "custom",
+    "backgroundColor": "#white"
+  },
+  "permission": {},
+  "usingComponents": {
+    "home": "/pages/component/home/index",
+    "search": "/pages/component/search/index",
+    "mine": "/pages/component/mine/index",
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "sitemapLocation": "sitemap.json"
+}

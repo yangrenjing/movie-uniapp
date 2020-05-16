@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "single-movie": "/pages/component/movie-tpl/single-movie"
+  },
+  "component": true
+}

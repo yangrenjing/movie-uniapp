@@ -1,0 +1,37 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"enablePullDownRefresh": true
+				// "navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/component/movie-tpl/movie-detail",
+			"style": {
+				// "navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/component/movie-tpl/more-movie",
+			"style": {
+				// "navigationBarTitleText": "首页"
+				// "enablePullDownRefresh": true // 启动下路刷新
+			}
+		},
+		{
+			"path": "pages/component/login/index",
+			"style": {
+				// "navigationBarTitleText": "首页"
+				// "enablePullDownRefresh": true // 启动下路刷新
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#ff6213",
+		"navigationStyle": "custom",
+		"backgroundColor": "#white"
+	}
+}

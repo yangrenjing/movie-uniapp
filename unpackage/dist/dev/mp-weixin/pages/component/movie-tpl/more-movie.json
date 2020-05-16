@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more/uni-load-more",
+    "single-movie": "/pages/component/movie-tpl/single-movie"
+  }
+}
