@@ -8701,10 +8701,9 @@ function normalizeComponent (
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
-
 var _requestUrl = _interopRequireDefault(__webpack_require__(/*! ./requestUrl.js */ 28));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //公共路径 
-// const commonUrl = "https://zy.yangrenjing.top:9988/"; 
-var commonUrl = "http://192.168.2.101:8080/"; // post请求封装
+var commonUrl = "http://xxxx.xxx.xxx:8080/";
+// post请求封装
 function postRequest(url, data) {var _this = this;
   var promise = new Promise(function (resolve, reject) {
     var that = _this;
