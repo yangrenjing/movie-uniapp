@@ -40,16 +40,16 @@
 			</view>
 			<!-- tab栏目 -->
 			<scroll-view scroll-x class="bg-green nav text-center">
-				<view class="cu-item" :class="0==TabCur?'text-white cur':''" @tap="tabSelect" data-id="0">
+				<view v-if="canShow" class="cu-item" :class="0==TabCur?'text-white cur':''" @tap="tabSelect" data-id="0">
 					<text class="cuIcon-playfill"></text> 播放
 				</view>
 				<view class="cu-item" :class="1==TabCur?'text-white cur':''" @tap="tabSelect" data-id="1">
 					<text class="cuIcon-edit"></text> 简介
 				</view>
-				<view class="cu-item" :class="2==TabCur?'text-white cur':''" @tap="tabSelect" data-id="2">
+				<view v-if="canShow" class="cu-item" :class="2==TabCur?'text-white cur':''" @tap="tabSelect" data-id="2">
 					<text class="cuIcon-down"></text> 下载1
 				</view>
-				<view class="cu-item" :class="3==TabCur?'text-white cur':''" @tap="tabSelect" data-id="3">
+				<view v-if="canShow" class="cu-item" :class="3==TabCur?'text-white cur':''" @tap="tabSelect" data-id="3">
 					<text class="cuIcon-down"></text> 下载1
 				</view>
 
@@ -57,7 +57,7 @@
 			<view style="width: 100%; text-align: center;">
 				<scroll-view scroll-y class="scoll-h">
 					<!-- 播放页面 -->
-					<view v-if="0==TabCur" class="padding margin text-center">
+					<view v-if="0==TabCur && canShow" class="padding margin text-center">
 						<view class="grid margin-bottom text-center col-3">
 							<view class="item-margin-bottom" v-for="(item,indexs) in movie.downUrls" :key="indexs">
 								<button :data-movie="movie" :data-url="item.url" :data-order="item.order" class="cu-btn round shadow lg" :class="item.order==remark? 'bg-red':'bg-green'"
@@ -70,7 +70,7 @@
 						<view class="summary-content" v-html='movie.vodBlurb'></view>
 					</view>
 					<!-- 下载1页面 -->
-					<view v-if="2==TabCur" class=" padding margin text-center">
+					<view v-if="2==TabCur && canShow" class=" padding margin text-center">
 						<view class="grid margin-bottom text-center col-3">
 							<view class="item-margin-bottom" v-for="(item,indexs) in movie.downUrls" :key="indexs">
 								<button :data-url="item.url" class="cu-btn round bg-green shadow lg" @click="copyUrl">{{item.order}}</button>
@@ -78,7 +78,7 @@
 						</view>
 					</view>
 					<!-- 下载2页面 -->
-					<view v-if="3==TabCur" class="padding margin text-center">
+					<view v-if="3==TabCur && canShow" class="padding margin text-center">
 						<view class="grid margin-bottom text-center col-3">
 							<view class="item-margin-bottom" v-for="(item,indexs) in movie.playUrls" :key="indexs">
 								<button :data-url="item.url" class="cu-btn round bg-green shadow lg" @click="copyUrl">{{item.order}}</button>
@@ -94,7 +94,7 @@
 		<!-- 赞赏模态窗口 -->
 		<view class="cu-modal" :class="zanModal?'show':''">
 			<view class="cu-dialog">
-				<view class="bg-img" style="background-image: url(../../../static/zan/zan.jpg);height:300px;">
+				<view class="bg-img" style="height:300px;" :style="'background-image: url('+ zanPic +')'">
 					<view class="cu-bar justify-end text-white">
 						<view class="action" @tap="hideModal">
 							<text class="cuIcon-close "></text>
@@ -150,7 +150,9 @@
 	export default {
 		data() {
 			return {
-				isShare : false,
+				zanPic: "",
+				canShow: this.canShow,
+				isShare: false,
 				shareModal: false,
 				id: null,
 				StatusBar: this.StatusBar,
@@ -196,6 +198,7 @@
 		onLoad: function(option) {
 			this.id = option.id
 			this.getDetail()
+			this.zanPic = reqeust.commonUrl + reqeust.url.ZAN_PIC
 		},
 		created: function() {},
 		methods: {
@@ -204,16 +207,21 @@
 				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60
 			},
 			trigger(e) {
-				console.log(e);
 				/* 首页 */
+				let _that = this;
 				if (e.index == 0) {
 					uni.redirectTo({
 						url: '/pages/index/index'
 					});
 					return;
 				} else if (e.index == 1) {
-					this.zanModal = true
-					return;
+					// this.zanModal = true
+					// return;
+					
+					uni.previewImage({
+						current: '0',
+						urls: [_that.zanPic],
+					});
 				}
 			},
 			hideModal(e) {
@@ -224,12 +232,12 @@
 			playMovie: function(e) {
 				//检验是否已经登陆
 				let userInfo = uni.getStorageSync('loginInfo')
-				if (userInfo ==null || userInfo == '') {
+				if (userInfo == null || userInfo == '') {
 					uni.navigateTo({
-					    url: '/pages/component/login/index'
+						url: '/pages/component/login/index'
 					});
 				}
-				
+
 				let playUrl = e.currentTarget.dataset.url
 				this.playModal = true
 				this.url = playUrl
@@ -237,7 +245,7 @@
 				if (!this.isShare) {
 					this.shareModal = true
 				}
-				
+
 			},
 			getDetail: function() {
 				let _that = this;
@@ -257,7 +265,7 @@
 					}
 				});
 			},
-			onShareAppMessage:function() {
+			onShareAppMessage: function() {
 				let _that = this;
 				this.shareModal = false
 				this.isShare = true

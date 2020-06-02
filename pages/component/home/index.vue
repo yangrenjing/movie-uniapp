@@ -195,6 +195,12 @@
 					uni.navigateTo({
 					    url: e.currentTarget.dataset.jump
 					});
+				} else if (typeId == 1) {
+					
+				} else if (typeId == 2) {
+					uni.navigateTo({
+					    url: '/pages/component/web/index'
+					});
 				}
 			}
 		},

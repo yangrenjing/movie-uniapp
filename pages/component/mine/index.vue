@@ -2,7 +2,7 @@
 	<view class="page">
 		<view class="me_container bg-gradual-pink">
 			<view class="padding" style="width: 100%;text-align: center;">
-				<view class="cu-avatar xl round login-button" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg);"></view>
+				<view class="cu-avatar xl round login-button" :style="'background-image:url(' + avtar +')'"></view>
 				<view class="padding flex flex-direction">
 					<view v-if="showInfo">{{nickname}}</view>
 					<button v-if="!showInfo" class="cu-btn bg-blue margin-tb-sm lg fixed " @click="toLogin">请登陆</button>
@@ -21,6 +21,12 @@
 				<view class="content" @click="show=true">
 					<text class="cuIcon-circlefill text-grey"></text>
 					<text class="text-grey">免责声明</text>
+				</view>
+			</view>
+			<view v-if="canShow" class="cu-item" :class="menuArrow?'arrow':''">
+				<view class="content" @click="addWx">
+					<text class="cuIcon-circlefill text-grey"></text>
+					<text class="text-grey">添加微信客服</text>
 				</view>
 			</view>
 		</view>
@@ -43,6 +49,8 @@
 </template>
 
 <script>
+	// 请求封装
+	import reqeust from '../../../util/request.js'
 	export default {
 		name: "mine",
 		data() {
@@ -50,6 +58,9 @@
 				show: false,
 				showInfo: false,
 				nickname: '',
+				zanPic: '',
+				canShow: this.canShow,
+				avtar:''
 			}
 		},
 		mounted: function() {
@@ -57,12 +68,20 @@
 			if (userInfo !== null && userInfo != '') {
 				this.nickname = userInfo.nickName
 				this.showInfo = true
+				this.avtar = userInfo.avatar
 			}
+			this.zanPic = reqeust.commonUrl + reqeust.url.QR_CODE
 		},
 		methods: {
 			toLogin: function() {
 				uni.navigateTo({
 					url: '/pages/component/login/index'
+				});
+			},
+			addWx:function () {
+				uni.previewImage({
+					current: '0',
+					urls: [this.zanPic],
 				});
 			}
 		}

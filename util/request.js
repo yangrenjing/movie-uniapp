@@ -1,5 +1,6 @@
 //公共路径 
-const commonUrl = "http://xxxx.xxx.xxx:8080/"; 
+const commonUrl = "http://192.168.2.101:8080/"; 
+// const commonUrl = "https://zy.yangrenjing.top:9988/"; 
 import url from './requestUrl.js'
 
 // post请求封装
@@ -69,5 +70,6 @@ function getRequest(url, data) {
 module.exports = {
     post: postRequest,
     get: getRequest,
-	url: url
+	url: url,
+	commonUrl:commonUrl
 };

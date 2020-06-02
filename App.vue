@@ -1,47 +1,57 @@
 <script>
-import Vue from 'vue'
-export default {
-	onLaunch: function() {
-		uni.getSystemInfo({
-			success: function(e) {
-				// #ifndef MP
-				Vue.prototype.StatusBar = e.statusBarHeight;
-				if (e.platform == 'android') {
-					Vue.prototype.CustomBar = e.statusBarHeight + 50;
-				} else {
-					Vue.prototype.CustomBar = e.statusBarHeight + 45;
-				};
-				// #endif
-	
-				// #ifdef MP-WEIXIN
-				Vue.prototype.StatusBar = e.statusBarHeight;
-				let custom = wx.getMenuButtonBoundingClientRect();
-				Vue.prototype.Custom = custom;
-				Vue.prototype.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-				// #endif		
-	
-				// #ifdef MP-ALIPAY
-				Vue.prototype.StatusBar = e.statusBarHeight;
-				Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight;
-				// #endif
-				
-				Vue.prototype.phoneHeight = e.windowHeight;
-				Vue.prototype.userInfo = uni.getStorageSync('loginInfo')
+	import Vue from 'vue'
+	// 请求封装
+	import reqeust from './util/request.js'
+	export default {
+		onLaunch: function() {
+			uni.getSystemInfo({
+				success: function(e) {
+					// #ifndef MP
+					Vue.prototype.StatusBar = e.statusBarHeight;
+					if (e.platform == 'android') {
+						Vue.prototype.CustomBar = e.statusBarHeight + 50;
+					} else {
+						Vue.prototype.CustomBar = e.statusBarHeight + 45;
+					};
+					// #endif
+
+					// #ifdef MP-WEIXIN
+					Vue.prototype.StatusBar = e.statusBarHeight;
+					let custom = wx.getMenuButtonBoundingClientRect();
+					Vue.prototype.Custom = custom;
+					Vue.prototype.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+					// #endif		
+
+					// #ifdef MP-ALIPAY
+					Vue.prototype.StatusBar = e.statusBarHeight;
+					Vue.prototype.CustomBar = e.statusBarHeight + e.titleBarHeight;
+					// #endif
+
+					Vue.prototype.phoneHeight = e.windowHeight;
+					Vue.prototype.userInfo = uni.getStorageSync('loginInfo')
+				}
+			})
+			uni.setStorageSync('storage_key', null);
+			this.getShowStatus()
+		},
+		onShow: function() {},
+		onHide: function() {},
+		methods: {
+			getShowStatus() {
+				let _that = this;
+				reqeust.get(reqeust.url.SHOW_STATUS, null).then(res => {
+					Vue.prototype.canShow = res
+				})
 			}
-		})
-		uni.setStorageSync('storage_key', null);
-	},
-	onShow: function() {
-	},
-	onHide: function() {
-	}
-};
+		}
+	};
 </script>
 
 <style>
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
-.nav-list {
+
+	.nav-list {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 0px 40upx 0px;

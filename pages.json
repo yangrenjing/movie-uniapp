@@ -25,6 +25,13 @@
 				// "navigationBarTitleText": "首页"
 				// "enablePullDownRefresh": true // 启动下路刷新
 			}
+		},
+		{
+			"path": "pages/component/web/index",
+			"style": {
+				// "navigationBarTitleText": "首页"
+				// "enablePullDownRefresh": true // 启动下路刷新
+			}
 		}
 	],
 	"globalStyle": {

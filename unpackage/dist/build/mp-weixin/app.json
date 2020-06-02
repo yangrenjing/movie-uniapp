@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/component/movie-tpl/movie-detail"
+    "pages/component/movie-tpl/movie-detail",
+    "pages/component/movie-tpl/more-movie",
+    "pages/component/login/index"
   ],
   "subPackages": [],
   "window": {

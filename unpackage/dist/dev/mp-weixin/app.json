@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/component/movie-tpl/movie-detail",
     "pages/component/movie-tpl/more-movie",
-    "pages/component/login/index"
+    "pages/component/login/index",
+    "pages/component/web/index"
   ],
   "subPackages": [],
   "window": {
@@ -19,5 +20,6 @@
     "search": "/pages/component/search/index",
     "mine": "/pages/component/mine/index",
     "cu-custom": "/colorui/components/cu-custom"
-  }
+  },
+  "sitemapLocation": "sitemap68.json"
 }

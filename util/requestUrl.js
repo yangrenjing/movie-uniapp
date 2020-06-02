@@ -5,5 +5,8 @@ export default {
 	GET_MORE_WATCH: '/vod/find/recommend',
 	DO_LOGIN: '/user/maLogin',
 	SEARCH: '/vod/find/key',
-	BANNER: 'banner/get'
+	BANNER: 'banner/get',
+	SHOW_STATUS: 'vod/wx/show',
+	ZAN_PIC: '/assets/img/zan.jpg',
+	QR_CODE: '/assets/img/QRCode.jpg'
 }

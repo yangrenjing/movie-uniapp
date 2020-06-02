@@ -174,8 +174,7 @@
 .tab-h.data-v-03137338 {
 	height: 80rpx;
 	width: 100%;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	overflow: hidden;
 	line-height: 80rpx;
 	background: #F7F7F7;
@@ -216,8 +215,7 @@
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 	padding: 30rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	height: 180rpx;
 	-webkit-box-align: center;
 	-webkit-align-items: center;
