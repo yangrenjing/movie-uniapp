@@ -10,12 +10,12 @@
 
 ## 三、效果图
 1.我的  
-![](README_files/2.jpg)
-2.搜索页
-![](README_files/3.jpg)
-3.首页
-![](README_files/4.jpg)
-4.详情页
-![](README_files/5.jpg)
-5.弹窗播放
-![](README_files/6.jpg)
+![](README_files/2.jpg)  
+2.搜索页  
+![](README_files/3.jpg)  
+3.首页  
+![](README_files/4.jpg)  
+4.详情页  
+![](README_files/5.jpg)  
+5.弹窗播放  
+![](README_files/6.jpg)  
